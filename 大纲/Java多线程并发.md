@@ -53,9 +53,9 @@ synchronized可重入、不可中断、非公平；lock可重入、可中断、�
 ## 8. CAS？CAS 有什么缺陷，如何解决？ 
 
 compare and swap。比较和替换，使用一个期望值和当前值进行比较，如果当前变量的值和我们期望的值相等，就使用一个新值替换当前变量的值。 
-缺陷，只对值有效，而不会判断当前值是否经历了几次修改，加入版本控制编号（此处不理解可参考Mysql的乐观锁实现）
+缺陷，此处会导致aba问题（只对值有效，而不会判断当前值是否经历了几次修改，加入版本控制编号，此处不理解可参考Mysql的乐观锁实现。）
 
-## 9. 介绍ConcurrenHashMap？ 
+## 9. 介绍ConcurrentHashMap？ 
 
 线程安全的HashMap，与Hashtable在整个散列表上加锁不同的是，ConcurrentHashMap采用的是分段锁。将整个散列表分为几个部分，在不同部分加锁，称之为分段锁，key散列到不同的段可以并行存储互不影响，只有散列到同一个段上的时候才会加锁互斥。段的个数会根据设置的concurrentLevel来确定，concurrentLevel默认=16，段的个数会大于或等于concurrentLevel最小的2次幂。 
 
