@@ -47,7 +47,7 @@ ArrayList底层使用数组实现，按插入排序，数据可重复，线程�
 
 LinkedList底层使用链表实现，在JDK7是一个双向链表。同样按插入顺序，数据可重复，线程不安全，没有扩容问题。 
 
-Vector可看做是一个线程安全的ArrayList，它通过在方法上加入synchronized关键字来保证线程安全，效率不过。可使用Collections.synchronizedList创建线程安全的List。 
+Vector可看做是一个线程安全的ArrayList，它通过在方法上加入synchronized关键字来保证线程安全，效率不高。可使用Collections.synchronizedList创建线程安全的List。 
 
 在concurrent并发包中有ConcurrentHashMap线程安全的HashMap，却没有线程安全的List。这是由于ConcurrentHashMap通过分段锁的技术，既保证了线程安全，同时保证了编发性能。而List很难保证其并发性能，只有CopyOnWriteArrayList保证了只读的并发性能，而对于其修改操作同样需要锁住其整个List。 
 
