@@ -26,9 +26,9 @@ read、load、use；assign、store、save。
 
 重排序指的是JVM在对其进行优化时，会在不影响逻辑结果的情况下会对执行顺序有所改变。加入volatile关键字修饰后，在其指令中会形成内存屏障，在该关键字之前的操作不允许重排序。 
 
-## 4. Java 的信号灯 
+## 4. Java 的信号量
 
-Semaphore。使用信号灯Semaphore可控制线程访问资源的个数，通过acquire获取一个许可，没有就等待，通过release释放一个许可。内部通过AQS（AbstractQueuedSynchronizer）实现，控制数赋值给AQS中的state值，成功获得许可则状态-1，如果为0，线程此时进入AQS的等待队列中，创建Semaphore时可指定它的公平性，默认非公平。 
+Semaphore。使用信号量Semaphore可控制线程访问资源的个数，通过acquire获取一个许可，没有就等待，通过release释放一个许可。内部通过AQS（AbstractQueuedSynchronizer）实现，控制数赋值给AQS中的state值，成功获得许可则状态-1，如果为0，线程此时进入AQS的等待队列中，创建Semaphore时可指定它的公平性，默认非公平。 
 
 ## 5. 怎么实现所有线程在等待某个事件的发生才会去执行？ 
 
